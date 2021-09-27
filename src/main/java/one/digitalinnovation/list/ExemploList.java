@@ -11,7 +11,7 @@ public class ExemploList {
 
         List<String> nomes = new ArrayList<>();
 
-        //MÉTODO ADD
+        //------MÉTODO ADD------------------------------------
         nomes.add("Carlos");
         nomes.add("Pedro");
         nomes.add("Juliana");
@@ -71,7 +71,7 @@ public class ExemploList {
         }
         System.out.print("\n");
 
-        //------MÉTODO Iterator--------------------------------------------------
+        //------MÉTODO ITERATOR--------------------------------------------------
         System.out.println("Iterando com o ITERATOR:");
         Iterator<String> iterator = nomes.iterator();
         while (iterator.hasNext()) {
