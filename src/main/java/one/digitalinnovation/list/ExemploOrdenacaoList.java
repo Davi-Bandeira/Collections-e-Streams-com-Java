@@ -2,6 +2,7 @@ package one.digitalinnovation.list;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class ExemploOrdenacaoList {
@@ -28,7 +29,24 @@ public class ExemploOrdenacaoList {
         System.out.println(meusGatos);
         System.out.println();
 
-//        System.out.println("--\tOrdem Idade\t---");
+        System.out.println("--\tOrdem Idade\t---");
+//        Collections.sort(meusGatos, new ComparatorIdade());
+        meusGatos.sort(new ComparatorIdade());
+        System.out.println(meusGatos);
+        System.out.println();
+
+        System.out.println("--\tOrdem Cor\t---");
+//        Collections.sort(meusGatos, new ComparatorCor());
+        meusGatos.sort(new ComparatorCor());
+        System.out.println(meusGatos);
+        System.out.println();
+
+        System.out.println("--\tOrdem Nome/Cor/Idade\t---");
+//        Collections.sort(meusGatos, new ComparatorNomeCorIdade());
+        meusGatos.sort(new ComparatorNomeCorIdade());
+        System.out.println(meusGatos);
+        System.out.println();
+
     }
 }
 
@@ -67,5 +85,32 @@ class Gato implements Comparable<Gato>{
     @Override
     public int compareTo(Gato gato) {
         return this.getNome().compareToIgnoreCase(gato.getNome());
+    }
+}
+
+class ComparatorIdade implements Comparator<Gato> {
+    @Override
+    public int compare(Gato gato1, Gato gato2) {
+        return Integer.compare(gato1.getIdade(), gato2.getIdade());
+    }
+}
+
+class ComparatorCor implements Comparator<Gato> {
+    @Override
+    public int compare(Gato gato1, Gato gato2) {
+        return gato1.getCor().compareToIgnoreCase(gato2.getCor());
+    }
+}
+
+class ComparatorNomeCorIdade implements Comparator<Gato> {
+    @Override
+    public int compare(Gato gato1, Gato gato2) {
+        int nome = gato1.getNome().compareToIgnoreCase(gato2.getNome());
+        if (nome != 0) return nome;
+
+        int cor = gato1.getCor().compareToIgnoreCase(gato2.getCor());
+        if (cor != 0) return cor;
+
+        return Integer.compare(gato1.getIdade(), gato2.getIdade());
     }
 }
